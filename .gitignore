@@ -27,6 +27,6 @@ phpunit.phar
 /phpunit.xml
 
 /config/web.php
-/runtime/cache/
+/runtime/
 
 /tests/

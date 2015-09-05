@@ -1,0 +1,5 @@
+php composer.phar require "2amigos/yii2-google-maps-library" "*"
+
+sudo php composer.phar require dmstr/yii2-adminlte-asset "2.*"
+
+php composer.phar require --prefer-dist yiisoft/yii2-jui
