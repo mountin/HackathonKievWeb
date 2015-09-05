@@ -13,7 +13,6 @@ use dosamigos\google\maps\overlays\Polygon;
 use dosamigos\google\maps\layers\BicyclingLayer;
 
 $coord = new LatLng(['lat' => 50.45466, 'lng' => 30.5238]);
-$coord2 = new LatLng(['lat' => 50.45456, 'lng' => 30.5228]);
 $map = new Map([
 'center' => $coord,
 'zoom' => 11,
@@ -30,8 +29,6 @@ $directionsRenderer = new DirectionsRenderer([
     'map' => $map->getName(),
     'polylineOptions' => $polylineOptions
 ]);
-
-var_dump($markers);
 
 // Lets configure the markers that renders the direction
 foreach($markers as $marker){
