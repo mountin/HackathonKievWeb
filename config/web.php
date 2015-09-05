@@ -6,6 +6,16 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+        'view' => [
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'dmstr\web\AdminLteAsset' => [
+                    'skin' => 'skin-green',
+                ],
+            ],
+        ],
+
 //        'assetManager' => [
 //            'bundles' => [
 //                'dosamigos\google\maps\MapAsset' => [

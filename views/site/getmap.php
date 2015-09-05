@@ -17,7 +17,9 @@ $map = new Map([
 'center' => $coord,
 'zoom' => 11,
 ]);
+$map->height = '620';
 $map->width = '100%';
+
 
 $polylineOptions = new PolylineOptions([
     'strokeColor' => 'black',
@@ -46,3 +48,22 @@ foreach($markers as $marker){
 }
 
 echo $map->display();
+?>
+<script>
+
+    window.onload = function()
+
+    {
+        //alert("window load occurred!");
+        //alert(jQuery("#gmap0-map-canvas").css("height"));
+        jQuery("#gmap0-map-canvas").css("height", 1024);
+    }
+
+
+
+
+    //console.log(document.getElementById("gmap0-map-canvas").style.height);
+
+
+
+</script>
