@@ -51,6 +51,8 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+
+
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
@@ -90,4 +92,22 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionGetmap()
+    {
+        if ( isset(Yii::$app->params["remoteApiServer"]) ){
+            $serverApi = Yii::$app->params["remoteApiServer"];
+            $list = Yii::$app->params["listOfAlltMarkers"];
+        }
+        else
+            return false;
+
+        $json = file_get_contents($serverApi.'/'.$list);
+
+        $json_array = json_decode($json, false);
+
+        return $this->render('getmap', array('markers'=>$json_array));
+
+    }
+
 }

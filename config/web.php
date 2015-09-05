@@ -6,6 +6,17 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+//        'assetManager' => [
+//            'bundles' => [
+//                'dosamigos\google\maps\MapAsset' => [
+//                    'options' => [
+//                        'key' => 'AIzaSyC-kqVve4E6cW8raHQmRdwe7H4mBGo3mDQ',
+//                        'language' => 'id',
+//                        'version' => '3.1.18'
+//                    ]
+//                ]
+//            ]
+//        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'hack',
@@ -20,9 +31,9 @@ $config = [
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
             ],
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+//        'cache' => [
+//            'class' => 'yii\caching\FileCache',
+//        ],
         'user' => [
 
             'identityClass' => 'app\models\User',
