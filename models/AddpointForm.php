@@ -43,9 +43,9 @@ class AddpointForm extends Model
             'name' => 'Назва',
             //'longitude' => ''
             //'latitude' => ''
-            'type' => 'Тип',
+            'type' => 'Тип сировини',
             'phone' => 'Телефон',
-            'address' => 'Адреса',
+            'address' => 'Адреса пункту прийому сировини',
             'comment' => 'Коментарі',
         ];
     }
@@ -62,24 +62,39 @@ class AddpointForm extends Model
     {
         if ($this->validate()) {
 
+            $lng = !empty($this->address) ? $this->getLatLngFromAddress($this->address) : 20.00000;
+            $lat = !empty($this->address) ? $this->getLatLngFromAddress($this->address) : 50.00000;
+
             $pointData = [
                 'name' => $this->name,
-                'longitude' => $this->longitude,
-                'latitude' => $this->latitude,
+                'address' => $this->address,
+                'longitude' => $lng['lng'],
+                'latitude' => $lat['lat'],
                 'type' => $this->type,
                 'phone' => $this->phone,
-                'address' => $this->address,
                 'comment' => $this->comment
             ];
-
-            echo 1111111111111;
-            echo '<pre>';
-            print_r($pointData);
-            echo '</pre>';
 
             return $pointData;
         }
 
         return false;
+    }
+
+    /**
+     * @param string $address
+     * @return array
+     */
+    public function getLatLngFromAddress($address)
+    {
+        $result = [];
+        $prepareAddress = str_replace(' ', '+', $address);
+
+        $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address=' . $prepareAddress . '&sensor=false');
+        $output = json_decode($geocode);
+
+        $result['lat'] = $output->results[0]->geometry->location->lat;
+        $result['lng'] = $output->results[0]->geometry->location->lng;
+        return  $result;
     }
 }

@@ -133,7 +133,7 @@ class SiteController extends Controller
            ->post($postUrl);
 
             // Yii::$app->session->setFlash('addpointFormSubmitted');
-            return $this->refresh();
+            return $this->redirect('/site/getmap');
         }
 
         return $this->render('addpoint', [
