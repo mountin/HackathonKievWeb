@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        Ви можете выкористати наши даннi через наше API:
+        Ви можете скорисатись нашими данними, використовуючi наш API:
     </p>
 
     <code>http://146.185.190.210:3000</code>
