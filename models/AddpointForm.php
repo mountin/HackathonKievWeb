@@ -5,16 +5,21 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
+use linslin\yii2\curl;
+
 /**
  * ContactForm is the model behind the contact form.
  */
 class AddpointForm extends Model
 {
     public $name;
-    public $email;
-    public $subject;
-    public $body;
-    public $verifyCode;
+    public $status;
+    public $longitude;
+    public $latitude;
+    public $type;
+    public $phone;
+    public $address;
+    public $comment;
 
     /**
      * @return array the validation rules.
@@ -22,12 +27,10 @@ class AddpointForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
-            ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            // name, address, type are required
+            [['name', 'address', 'type'], 'required'],
+            [['type'], 'string'],
+            [['longitude', 'latitude', 'status', 'phone', 'comment'], 'safe'],
         ];
     }
 
@@ -37,27 +40,46 @@ class AddpointForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => 'Назва',
+            //'longitude' => ''
+            //'latitude' => ''
+            'type' => 'Тип',
+            'phone' => 'Телефон',
+            'address' => 'Адреса',
+            'comment' => 'Коментарі',
         ];
     }
 
-    /**
-     * Sends an email to the specified email address using the information collected by this model.
-     * @param  string  $email the target email address
-     * @return boolean whether the model passes validation
-     */
-    public function contact($email)
+    public static function getTypeAttribute()
+    {
+        return [
+            'Батарейки',
+            'Скло'
+        ];
+    }
+
+    public function validateData()
     {
         if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom([$this->email => $this->name])
-                ->setSubject($this->subject)
-                ->setTextBody($this->body)
-                ->send();
 
-            return true;
+            $pointData = [
+                'name' => $this->name,
+                'longitude' => $this->longitude,
+                'latitude' => $this->latitude,
+                'type' => $this->type,
+                'phone' => $this->phone,
+                'address' => $this->address,
+                'comment' => $this->comment
+            ];
+
+            echo 1111111111111;
+            echo '<pre>';
+            print_r($pointData);
+            echo '</pre>';
+
+            return $pointData;
         }
+
         return false;
     }
 }
