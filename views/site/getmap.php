@@ -14,10 +14,10 @@ use dosamigos\google\maps\layers\BicyclingLayer;
 
 $coord = new LatLng(['lat' => 50.45466, 'lng' => 30.5238]);
 $map = new Map([
-'center' => $coord,
-'zoom' => 11,
+    'center' => $coord,
+    'zoom' => 11,
 ]);
-$map->height = '1000';
+$map->height = '800';
 $map->width = '100%';
 
 
@@ -33,16 +33,28 @@ $directionsRenderer = new DirectionsRenderer([
 ]);
 
 // Lets configure the markers that renders the direction
-foreach($markers as $marker){
+foreach ($markers as $marker) {
 
     $newPoint = new Marker([
         'position' => new LatLng(['lat' => $marker->latitude, 'lng' => $marker->longitude]),
         'title' => $marker->name,
     ]);
-
+    $html = "
+<h3>{$marker->name}</h3>
+<img src='/img/gree-point.gif'> <span style='color:green'>{$marker->address}</span> <img src='/img/turn-right.png'>
+<br/>";
+    if (!empty($marker->phone)) {
+        $html .= "<img src='/img/call.png'>{$marker->phone}";
+    }
+    if ($marker->type == 'battery') {
+        $html .= "<img src='/img/batt.png'>";
+    }
+    if (!empty($marker->comment)) {
+        $html .= "({$marker->comment})";
+    }
     $newPoint->attachInfoWindow(
         new InfoWindow([
-            'content' => $marker->name
+            'content' => $html //$marker->name
         ]));
     $map->addOverlay($newPoint);
 }
@@ -51,19 +63,15 @@ echo $map->display();
 ?>
 <script>
 
-    window.onload = function()
-
-    {
+    window.onload = function () {
+        $(".skin-black").addClass("sidebar-collapse");
         //alert("window load occurred!");
         //alert(jQuery("#gmap0-map-canvas").css("height"));
-        jQuery("#gmap0-map-canvas").css("height", 1024);
+        //jQuery("#gmap0-map-canvas").css("height", 1024);
     }
 
 
-
-
     //console.log(document.getElementById("gmap0-map-canvas").style.height);
-
 
 
 </script>

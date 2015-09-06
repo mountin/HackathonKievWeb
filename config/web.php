@@ -11,22 +11,11 @@ $config = [
         'assetManager' => [
             'bundles' => [
                 'dmstr\web\AdminLteAsset' => [
-                    'skin' => 'skin-green',
+                    'skin' => 'skin-black',
                 ],
             ],
         ],
 
-//        'assetManager' => [
-//            'bundles' => [
-//                'dosamigos\google\maps\MapAsset' => [
-//                    'options' => [
-//                        'key' => 'AIzaSyC-kqVve4E6cW8raHQmRdwe7H4mBGo3mDQ',
-//                        'language' => 'id',
-//                        'version' => '3.1.18'
-//                    ]
-//                ]
-//            ]
-//        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'hack',

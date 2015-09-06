@@ -49,9 +49,25 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex($param1=null)
     {
-        return $this->render('index');
+
+        if ($param1){
+            echo 1111111111;
+        }
+        if ( isset(Yii::$app->params["remoteApiServer"]) ){
+            $serverApi = Yii::$app->params["remoteApiServer"];
+            $list = Yii::$app->params["listOfAlltMarkers"];
+        }
+        else
+            return false;
+
+        $json = file_get_contents($serverApi.'/'.$list);
+
+        $json_array = json_decode($json, false);
+
+        return $this->render('getmap', array('markers'=>$json_array));
+        //return $this->render('index');
     }
 
 
@@ -143,18 +159,12 @@ class SiteController extends Controller
 
     public function actionGetmap()
     {
-        if ( isset(Yii::$app->params["remoteApiServer"]) ){
-            $serverApi = Yii::$app->params["remoteApiServer"];
-            $list = Yii::$app->params["listOfAlltMarkers"];
-        }
-        else
-            return false;
 
-        $json = file_get_contents($serverApi.'/'.$list);
 
-        $json_array = json_decode($json, false);
-
-        return $this->render('getmap', array('markers'=>$json_array));
+    }
+    public function actionGetapi()
+    {
+        return $this->render('getapi');
 
     }
 
