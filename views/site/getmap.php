@@ -17,7 +17,7 @@ $map = new Map([
 'center' => $coord,
 'zoom' => 11,
 ]);
-$map->height = '620';
+$map->height = '1000';
 $map->width = '100%';
 
 
