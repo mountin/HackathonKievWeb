@@ -31,26 +31,33 @@ $directionsRenderer = new DirectionsRenderer([
     'map' => $map->getName(),
     'polylineOptions' => $polylineOptions
 ]);
-
+//echo 'count='.count($markers);
 // Lets configure the markers that renders the direction
 foreach ($markers as $marker) {
 
+//    $icon = new EGMapMarkerImage($img);
+//    $icon->setSize(36, 52);
+//    $icon->setAnchor(16, 16.5);
+//    $icon->setOrigin(0, 0);
+
+
     $newPoint = new Marker([
-        'position' => new LatLng(['lat' => $marker->latitude, 'lng' => $marker->longitude]),
-        'title' => $marker->name,
+        'position' => new LatLng(['lat' => $marker['latitude'], 'lng' => $marker['longitude']]),
+        'title' => $marker['name'],
+        'icon' => 'http://greenapi.loc/img/icon2.png',
     ]);
     $html = "
-<h3>{$marker->name}</h3>
-<img src='/img/gree-point.gif'> <span style='color:green'>{$marker->address}</span> <img src='/img/turn-right.png'>
+<h3>{$marker['name']}</h3>
+<img src='/img/gree-point.gif'> <span style='color:green'>{$marker['address']}</span> <img src='/img/turn-right.png'>
 <br/>";
-    if (!empty($marker->phone)) {
-        $html .= "<img src='/img/call.png'>{$marker->phone}";
+    if (!empty($marker['phone'])) {
+        $html .= "<img src='/img/call.png'>{$marker['phone']}";
     }
-    if ($marker->type == 'battery') {
+    if ($marker['type'] == 'battery') {
         $html .= "<img src='/img/batt.png'>";
     }
-    if (!empty($marker->comment)) {
-        $html .= "({$marker->comment})";
+    if (!empty($marker['comment'])) {
+        $html .= "({$marker['comment']})";
     }
     $newPoint->attachInfoWindow(
         new InfoWindow([

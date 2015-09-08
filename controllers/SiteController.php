@@ -52,9 +52,8 @@ class SiteController extends Controller
     public function actionIndex($param1=null)
     {
 
-        if ($param1){
-            echo 1111111111;
-        }
+        $request = Yii::$app->request;
+
         if ( isset(Yii::$app->params["remoteApiServer"]) ){
             $serverApi = Yii::$app->params["remoteApiServer"];
             $list = Yii::$app->params["listOfAlltMarkers"];
@@ -64,13 +63,19 @@ class SiteController extends Controller
 
         $json = file_get_contents($serverApi.'/'.$list);
 
-        $json_array = json_decode($json, false);
+        $json_array = json_decode($json, true);
+
+        if($request->get('filter')){
+            foreach($json_array as $k => $obj){
+                //if (($key = array_search($request->get('filter'), $obj)) !== false) unset($json_array[$k]);
+                if($obj['type'] !== $request->get('filter')){
+                    unset($json_array[$k]);
+                }
+            }
+        }
 
         return $this->render('getmap', array('markers'=>$json_array));
-        //return $this->render('index');
     }
-
-
 
     public function actionLogin()
     {
@@ -159,7 +164,9 @@ class SiteController extends Controller
 
     public function actionGetmap()
     {
+//echo $param1; die;
 
+        return $this->actionIndex();
 
     }
     public function actionGetapi()
@@ -167,5 +174,12 @@ class SiteController extends Controller
         return $this->render('getapi');
 
     }
+
+    public function actionMobile()
+    {
+        return $this->render('mobile');
+    }
+
+
 
 }

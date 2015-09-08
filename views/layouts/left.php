@@ -30,7 +30,7 @@ $types_array = json_decode($json, false);
             <li class="header">Меню карти</li>
             <?php
             foreach($types_array as $type){
-            echo "<li><a href='/index/{$type->value}'</a><i class='fa fa-file-code-o'></i><span>{$type->name} </span></a></li>";
+            echo "<li><a href='/site/getmap/{$type->value}'</a><i class='fa fa-file-code-o'></i><span>{$type->name} </span></a></li>";
             //
             } ?>
             <li><a href="/site/add"><i class="fa fa-dashboard"></i><span>Додаты новый пункт</span></a></li>

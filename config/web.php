@@ -27,7 +27,12 @@ $config = [
             'rules' => [
                 '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w\-]+>' => '<_c>/index',
+                '<_c:[\w\-]+>/<_a:[getmap]+>/<filter:\w+>' => '<_c>/<_a>', //reexp for  map filter
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+
+                '<_c:[\w\-]+>/<_a:[\w\-]+>/<param1>/<param2>' => '<_c>/view',
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/*' => '<controller>/<action>',
             ],
         ],
 //        'cache' => [

@@ -17,13 +17,16 @@ use yii\bootstrap\NavBar;
         font-family: open-sans;
         font-size: 12;
     }
-    .content-wrapper{
+    .site-about{
         padding: 15px;
+    }
+    .content-wrapper{
+        /*padding: 15px;*/
     }
 </style>
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg"><img src="http://greenapi.loc/img/logo1.jpg" border="0">'  . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg"><img src="'.Yii::$app->request->hostInfo.'/img/logo1.jpg" border="0">'  . '</span>', Yii::$app->request->hostInfo, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -33,7 +36,14 @@ use yii\bootstrap\NavBar;
 
         <div class="navbar-custom-menu">
 
+            <ul class="nav navbar-nav">
+                <li class="dropdown tasks-menu">
 
+                    <a href="<?=Yii::$app->request->hostInfo;?>/site/add" style="background-color: #FF5610">
+                        <i class="fa fa-plus-o" style="color: white; font-weight: normal; font-family: Verdana"; >+ Додати пункт</i>
+                    </a>
+
+</ul>
         </div>
     </nav>
 </header>
