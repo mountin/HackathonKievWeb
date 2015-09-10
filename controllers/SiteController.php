@@ -52,6 +52,7 @@ class SiteController extends Controller
     public function actionIndex($param1=null)
     {
 
+//        $this->actionGetexample();die;
         $request = Yii::$app->request;
 
         if ( isset(Yii::$app->params["remoteApiServer"]) ){

@@ -17,6 +17,7 @@ $config = [
         ],
 
         'request' => [
+	    'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'hack',
         ],
@@ -25,6 +26,8 @@ $config = [
 
             'showScriptName' => false,
             'rules' => [
+		'' => 'site/index',
+	        '<action>'=>'site/<action>',
                 '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w\-]+>' => '<_c>/index',
                 '<_c:[\w\-]+>/<_a:[getmap]+>/<filter:\w+>' => '<_c>/<_a>', //reexp for  map filter
