@@ -48,9 +48,25 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'longitude')->hiddenInput()->label(false) ?>
                     <?= $form->field($model, 'latitude')->hiddenInput()->label(false) ?>
                     <?= $form->field($model, 'phone') ?>
+                    <?= $form->field($model, 'images')->hiddenInput()->label(false) ?>
+
+                <div id="drag">DROP!
+                    <button id="fbutton">Select File(s)</button>
+                    <input id="einput" type="input" placeholder="External Image URL"><button id="external">Submit</button>
+                </div>
+                <input type="file" id="filesinput" multiple>
+                <input type="file" id="directoryinput" multiple webkitdirectory>
+
+
+                <div id="output"></div>
+                <div id="error"></div>
+
+                <script type="text/javascript" src="../img/upload.js"></script>
+
 
             </div>
-
+            <div id="output"></div>
+            <div id="error"></div>
             <div class="col-lg-6" style="margin-left:20px;">
             
                     <?= $form->field($model, 'comment')->textArea(['rows' => 11]) ?>
@@ -68,5 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     <?php endif; ?>
+
 </div>
 

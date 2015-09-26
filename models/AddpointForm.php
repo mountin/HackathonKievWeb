@@ -20,6 +20,7 @@ class AddpointForm extends Model
     public $phone;
     public $address;
     public $comment;
+    public $images;
 
     /**
      * @return array the validation rules.
@@ -29,7 +30,7 @@ class AddpointForm extends Model
         return [
             // name, address, type are required
             [['name', 'address', 'type'], 'required'],
-            [['type'], 'string'],
+            [['type', 'images'], 'string'],
             [['longitude', 'latitude', 'status', 'phone', 'comment'], 'safe'],
         ];
     }
