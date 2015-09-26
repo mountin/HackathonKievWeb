@@ -154,8 +154,13 @@ class SiteController extends Controller
             )
            ->post($postUrl);
 
-            // Yii::$app->session->setFlash('addpointFormSubmitted');
-            return $this->redirect('/site/getmap');
+            if(!empty($response)){
+                Yii::$app->session->setFlash('addpointFormSubmitted');
+            }else{
+                Yii::$app->session->setFlash('addpointFormError');
+            }
+
+            //return $this->redirect('/site/getmap');
         }
 
         return $this->render('addpoint', [

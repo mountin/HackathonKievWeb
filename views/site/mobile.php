@@ -14,9 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-       Допоможiть нам зробити гарне мобiльний додаток! Приймiть учать у тестуваннi на подiлiться своiми враженнями: </br>
+       Допоможiть нам зробити гарный мобiльний додаток! Приймiть учать у тестуваннi на подiлiться своiми враженнями: </br>
         <a href="https://play.google.com/apps/testing/com.goodcodeforfun.cleancitybattery">https://play.google.com/apps/testing/com.goodcodeforfun.cleancitybattery</a>
     </p>
 
-    <code><?= __FILE__ ?></code>
 </div>

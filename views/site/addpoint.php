@@ -20,11 +20,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if (Yii::$app->session->hasFlash('addpointFormSubmitted')): ?>
 
         <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
+            Дякуємо Ваш за вклад у нашу базу данних, ваша точко з'явиться на карті найближчим часом.
         </div>
 
-    <?php else: ?>
+    <?php elseif (Yii::$app->session->hasFlash('addpointFormError')): ?>
 
+        <div class="alert alert-error">
+            Щось трапилось - ваша точка не додалася!
+        </div>
+    <?php else: ?>
         <div class="row">
             <div class="col-lg-5" style="margin-left:20px;">
 

@@ -33,7 +33,7 @@ $types_array = json_decode($json, false);
             echo "<li><a href='/site/getmap/{$type->value}'</a><i class='fa fa-file-code-o'></i><span>{$type->name} </span></a></li>";
             //
             } ?>
-            <li><a href="/site/add"><i class="fa fa-dashboard"></i><span>Додаты новый пункт</span></a></li>
+            <li><a href="/site/add"><i class="fa fa-dashboard"></i><span>Додати новый пункт</span></a></li>
 
             <li><a href="/site/about"><i class="fa fa-dashboard"></i><span>Про команду</span></a></li>
             <li><a href="/site/mobile"><i class="fa fa-dashboard"></i><span>Моб. Додаток</span></a></li>

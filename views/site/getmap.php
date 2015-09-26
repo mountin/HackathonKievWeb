@@ -44,7 +44,7 @@ foreach ($markers as $marker) {
     $newPoint = new Marker([
         'position' => new LatLng(['lat' => $marker['latitude'], 'lng' => $marker['longitude']]),
         'title' => $marker['name'],
-        'icon' => 'http://greenapi.loc/img/icon2.png',
+        'icon' => '/img/icon2.png',
     ]);
     $html = "
 <h3>{$marker['name']}</h3>
